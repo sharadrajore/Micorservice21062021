@@ -1,0 +1,19 @@
+package com.zensar.services;
+
+import org.springframework.stereotype.Service;
+
+import com.zensar.entity.Coupon;
+import com.zensar.repository.CouponRepository;
+
+@Service
+public class CouponServiceImpl implements CouponService {
+	
+	private CouponRepository couponRepository;
+
+	@Override
+	public Coupon createCoupon(Coupon coupon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

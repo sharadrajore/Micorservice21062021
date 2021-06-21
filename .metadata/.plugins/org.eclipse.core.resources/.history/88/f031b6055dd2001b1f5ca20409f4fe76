@@ -1,0 +1,6 @@
+package com.zensar.entity;
+
+@Entity
+public class Coupon {
+
+}

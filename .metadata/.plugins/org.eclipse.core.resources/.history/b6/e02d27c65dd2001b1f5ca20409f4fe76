@@ -1,0 +1,13 @@
+package com.zensar.services;
+
+import com.zensar.entity.Coupon;
+
+public class CouponServiceImpl implements CouponService {
+
+	@Override
+	public Coupon createCoupon(Coupon coupon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
