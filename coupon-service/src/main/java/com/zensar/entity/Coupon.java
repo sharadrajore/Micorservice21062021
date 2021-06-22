@@ -16,7 +16,7 @@ public class Coupon {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int couponId;
 	private String couponCode;
-	private double discount;
+	private Double discount;
 	private String expDate;
 	
 }
