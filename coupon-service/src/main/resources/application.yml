@@ -16,9 +16,7 @@ spring:
   application:
     name: coupon-service
     
-    
-server:
-  port: 8082
+
   
 
     

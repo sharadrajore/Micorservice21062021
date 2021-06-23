@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.zensar.entity.Coupon;
 import com.zensar.entity.Product;
+import com.zensar.restclient.RestClient;
 import com.zensar.services.ProductService;
 
 @RestController
@@ -18,13 +18,18 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	//@Autowired
+	//private RestTemplate restTemplate;
+	
 	@Autowired
-	private RestTemplate restTemplate;
+	private RestClient client;
 	
 	@PostMapping("/products")
 	public Product insertProduct(@RequestBody Product product) {
 		// Making a call to coupon service
-		Coupon coupon=restTemplate.getForObject("http://COUPON-SERVICE/api/v1/coupons/"+product.getCouponCode(), Coupon.class);
+		//Coupon coupon=restTemplate.getForObject("http://COUPON-SERVICE/api/v1/coupons/"+product.getCouponCode(), Coupon.class);
+		
+		Coupon coupon=client.getCoupon(product.getCouponCode());
 		product.setPrice(product.getPrice()-coupon.getDiscount());
 		return productService.insertProduct(product);
 	}

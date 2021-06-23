@@ -1,6 +1,7 @@
 package com.zensar.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,9 @@ public class CouponController {
 
 	@Autowired
 	private CouponService couponService;
+	
+	@Value("${server.instance.name}")
+	private String instanceName;
 
 	@PostMapping("/coupons")
 	public Coupon createCoupon(@RequestBody Coupon coupon) {
@@ -25,6 +29,7 @@ public class CouponController {
 
 	@GetMapping("/coupons/{couponCode}")
 	public Coupon getCoupon(@PathVariable("couponCode") String couponCode) {
+		System.out.println(" Hello from "+ instanceName);
 		return couponService.getCoupon(couponCode);
 	}
 	
