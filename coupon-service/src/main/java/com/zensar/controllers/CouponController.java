@@ -13,7 +13,7 @@ import com.zensar.entity.Coupon;
 import com.zensar.services.CouponService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/coupons")
 public class CouponController {
 
 	@Autowired
@@ -22,12 +22,12 @@ public class CouponController {
 	@Value("${server.instance.name}")
 	private String instanceName;
 
-	@PostMapping("/coupons")
+	@PostMapping("/")
 	public Coupon createCoupon(@RequestBody Coupon coupon) {
 		return couponService.createCoupon(coupon);
 	}
 
-	@GetMapping("/coupons/{couponCode}")
+	@GetMapping("/{couponCode}")
 	public Coupon getCoupon(@PathVariable("couponCode") String couponCode) {
 		System.out.println(" Hello from "+ instanceName);
 		return couponService.getCoupon(couponCode);

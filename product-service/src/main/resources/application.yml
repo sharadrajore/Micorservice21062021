@@ -15,7 +15,17 @@ spring:
 eureka:
   client:
     fetch-registry: true
-    register-with-eureka: false
+    register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 9090
+  
+resilience4j:
+  retry:
+    instances:
+     product-api:
+      max-attempts: 2
+      wait-duration: 3s
     
