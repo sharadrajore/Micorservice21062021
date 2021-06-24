@@ -1,6 +1,7 @@
 package com.zensar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ import io.github.resilience4j.retry.annotation.Retry;
 @RequestMapping("/products")
 public class ProductController {
 	
+	@Value("${server.port}")
+	private int port;
+	
 	@Autowired
 	private ProductService productService;
 	
@@ -29,6 +33,7 @@ public class ProductController {
 	@PostMapping("/")
 	@Retry(name = "product-api",fallbackMethod ="fallbackMethod")
 	public Product insertProduct(@RequestBody Product product) {
+		System.out.println("--------------"+port);
 		// Making a call to coupon service
 		//Coupon coupon=restTemplate.getForObject("http://COUPON-SERVICE/api/v1/coupons/"+product.getCouponCode(), Coupon.class);
 		
