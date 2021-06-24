@@ -1,5 +1,7 @@
 spring:
   config:
+   import: configserver:http://localhost:8888/
+    
    location: http://localhost:8888/
   datasource:
     url: jdbc:mysql://localhost:3306/mydb
@@ -12,11 +14,10 @@ spring:
     
   application:
     name: product-service
+  profiles:
+    active:
+    - prod
  
-    
-
-    
-    
 eureka:
   client:
     fetch-registry: true
@@ -32,6 +33,9 @@ resilience4j:
      product-api:
       max-attempts: 2
       wait-duration: 3s
+      
+      
+    
       
       
     
