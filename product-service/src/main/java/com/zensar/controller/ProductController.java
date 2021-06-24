@@ -1,7 +1,5 @@
 package com.zensar.controller;
 
-import javax.xml.ws.FaultAction;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +11,6 @@ import com.zensar.entity.Product;
 import com.zensar.restclient.RestClient;
 import com.zensar.services.ProductService;
 
-import io.github.resilience4j.fallback.FallbackMethod;
 import io.github.resilience4j.retry.annotation.Retry;
 
 @RestController
@@ -41,6 +38,7 @@ public class ProductController {
 	}
 	
 	public Product fallbackMethod(Product product, Exception e) {
+		System.out.println("Sorry,server is too busy !!!!");
 		return product;
 	}
 	
