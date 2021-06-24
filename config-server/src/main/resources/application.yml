@@ -10,7 +10,8 @@ spring:
    config:
     server:
      git:
-      uri : D:\config-server
+      uri : https://github.com/sharadrajore/Micorservice21062021.git
+      
     
     
 
